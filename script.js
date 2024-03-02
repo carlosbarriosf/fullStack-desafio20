@@ -2,7 +2,7 @@
 
 class Usuario {
     constructor (id, name, mail, password) {
-        this.id = id
+        this.id = id;
         this.name = name;
         this.mail = mail;
         this.password = password;
@@ -96,6 +96,63 @@ class TablaUsuarios {
     
     renderTable() {
         //create an html table for users in the list
+        const users = JSON.parse(localStorage.getItem('users'));
+        if(!users) return
+        const listContainer = document.querySelector('[data-users-list]');
+        listContainer.style.display = 'flex';
+
+        const table = document.createElement('table');
+        table.classList.add('userList__table')
+
+        const tableHeader = document.createElement('thead');
+        const headerRow = document.createElement('tr');
+
+        const headerId = document.createElement('th');
+        headerId.innerText = 'ID';
+        
+        const headerName = document.createElement('th');
+        headerName.innerText = 'Nombre';
+
+        const headerMail = document.createElement('th');
+        headerMail.innerText = 'Correo Electrónico';
+
+        const headerPassword = document.createElement('th');
+        headerPassword.innerText = 'Contraseña';
+
+
+        headerRow.appendChild(headerId);
+        headerRow.appendChild(headerName);
+        headerRow.appendChild(headerMail);
+        headerRow.appendChild(headerPassword);
+
+        tableHeader.appendChild(headerRow);
+
+        table.appendChild(tableHeader);
+
+        users.forEach(user => {
+            const tableRow = document.createElement('tr');
+            
+            const id = document.createElement('td');
+            id.innerText = user.id;
+
+            const name = document.createElement('td');
+            name.innerText = user.name;
+
+            const mail = document.createElement('td');
+            mail.innerText = user.mail;
+
+            const password = document.createElement('td');
+            password.innerText = user.password;
+
+            tableRow.appendChild(id);
+            tableRow.appendChild(name);
+            tableRow.appendChild(mail);
+            tableRow.appendChild(password);
+
+            table.appendChild(tableRow);
+        })
+
+        listContainer.appendChild(table)
     }
 
 }
@@ -128,6 +185,7 @@ function handleSignUpButton (nameInput, mailInput, passwordInput) {
         nameInput.value = '';
         mailInput.value = '';
         passwordInput.value = '';
+        location.reload();
     }
 }
 
@@ -144,3 +202,8 @@ function saveUserToLocalStorage (user) {
     }
     console.log(localStorage.getItem('users'))
 }
+
+//instance of usersTable
+
+const usersTable = new TablaUsuarios();
+usersTable.renderTable();

@@ -1,0 +1,31 @@
+.userList-container {
+    background-color: #f4f4f4;
+    color: var(--color-secondary);
+    border-radius: 12px;
+    display: none;
+    flex-direction: column;
+    padding: 1.5rem;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.userList__header {
+    color: var(--color-main);
+    text-align: center;
+}
+
+
+.userList__table, th, td {
+    border: 1px solid var(--color-main);
+    border-collapse: collapse;
+    padding: 0.25rem 0.5rem ;
+}
+
+td {
+    font-size: 0.8rem;
+}
+
+@media(min-width: 768px) {
+    .userList-container {
+        width: 600px;
+    }
+}

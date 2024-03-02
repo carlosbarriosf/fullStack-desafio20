@@ -2,11 +2,13 @@
 
 *{
     margin: 0;
-    padding: 0;   
+    padding: 0; 
+    box-sizing: border-box;  
 }
 
 :root {
     --color-main: #0369a1;
+    --color-secondary: #0ea5e9;
     --color-background: #e0f2fe;
     --color-error: #e11d48;
 }
@@ -14,11 +16,16 @@
 body {
     background-color: var(--color-background);
     font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 4rem 1rem;
 }
 
 .signUp-container {
-    margin: 2rem auto;
-    width: 350px;
+    max-width: 400px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
     border-radius: 12px;
     background-color: white;
@@ -66,7 +73,7 @@ body {
 }
 
 .signUp__btn:hover {
-    background-color: #0ea5e9;
+    background-color: var(--color-secondary);
 }
 
 .errorMessage {
@@ -79,3 +86,4 @@ body {
 .showError {
     opacity: 1;
 }
+
